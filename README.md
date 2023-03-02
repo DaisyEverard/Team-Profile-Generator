@@ -1,4 +1,4 @@
-# Module 12 Object-Oriented Programming: Team Profile Generator
+<!-- # Module 12 Object-Oriented Programming: Team Profile Generator
 
 ## Your Task
 
@@ -8,9 +8,9 @@ Your task is to take the given starter code and convert it into a working Node.j
 
 As a manager a user want to generate a webpage that displays my team's basic info so that a user have quick access to their emails and GitHub profiles.
 
-## Instructions
+## Instructions -->
 
-* Create a command-line application that accepts accepts user input using the provided starter code.   
+<!-- * Create a command-line application that accepts accepts user input using the provided starter code.   
   * Create classes for each team member provided and export them. The tests for these classes (in the `_tests_` directory) must ALL pass.     
     * The first class is an `Employee` parent class with the following properties and methods:       
       * `name`
@@ -19,15 +19,14 @@ As a manager a user want to generate a webpage that displays my team's basic inf
       * `getName()`
       * `getId()`
       * `getEmail()`
-      * `getRole()`&mdash;returns `'Employee'`     
+      * `getRole()`&mdash;returns `'Employee'`      
     * The other three classes will extend `Employee`.      
     * In addition to `Employee`'s properties and methods, `Manager` will also have the following:
       * `officeNumber`
-      * `getRole()`&mdash;overridden to return `'Manager'`
-    * In addition to `Employee`'s properties and methods, `Engineer` will also have the following:
+      * `getRole()`&mdash;overridden to return `'Manager'` * In addition to `Employee`'s properties and methods, `Engineer` will also have the following:
       * `github`&mdash;GitHub username
       * `getGithub()`
-      * `getRole()`&mdash;overridden to return `'Engineer'`
+      * `getRole()`&mdash;overridden to return `'Engineer'` -->
     * In addition to `Employee`'s properties and methods, `Intern` will also have the following:
       * `school`
       * `getSchool()`
