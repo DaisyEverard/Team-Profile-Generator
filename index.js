@@ -66,15 +66,15 @@ const getIntern = async () => {
     ])
         return new Intern(res.name, res.id, res.email, res.school)
 }
-const mainMenu = () => {
-    inquirer.
-    prompt([
+const mainMenu = async () => {
+    const res =  await inquirer
+    .prompt([
         {type: "checkbox",
         name: "menu",
         message: "Please Choose an option:",
         choices: ["Add an engineer", "Add an intern", "Finish building the team"]
         }
-    ]).then(res => {
+    ])
         if (res.menu[0] === "Add an engineer") {
             return "engineer"
         } else if (res.menu[0] === "Add an intern") {
@@ -84,7 +84,6 @@ const mainMenu = () => {
         } else {
             return "no option"
         }
-    })
 } 
 
 let getTeam = async () => {
