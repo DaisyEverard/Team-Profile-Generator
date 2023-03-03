@@ -59,6 +59,8 @@ To test, please follow these instructions:
   - Ensure you have installed jest (if not, follow the instructions in the [installation](#installation) section)
   - Open the terminal and run `npm test`
   - The results of the tests will printed to the terminal
+
+  NOTE: when the tests were working, they all passed. Due to require() not being supported on newer versions I've had to change to "type": "module" in package.json and use import statements instead. I've tried to resolve this so the tests still work but haven't been able to so far. 
   
 ## Questions
 
