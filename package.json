@@ -26,5 +26,6 @@
   },
   "devDependencies": {
     "jest": "^29.4.3"
-  }
+  },
+  "type": "module"
 }
