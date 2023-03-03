@@ -106,8 +106,15 @@ let getTeam = async () => {
             console.log("You must choose an option");
             await menuLogic(); 
         } else if (menuRes === "finish") {
-            return team; 
-            // render(team); 
+            const newHTML = render(team); 
+            const fileName = `./output/${team[0].name}-team-profile.html`; 
+            fs.writeFile(fileName, newHTML, (err) => {
+                if (err) {
+                    console.error(err)
+                } else {
+                    console.log("Success!"); 
+                }
+            })
         } 
     }
     await menuLogic(); 
