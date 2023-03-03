@@ -11,11 +11,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 import { render } from './src/page-template.js';
 
-
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
-// write inquier.prompt seperate function for each type of person and one for menu that 
 // creates object/adds them to something
-const getManger = () => {
+const getManager = () => {
     inquirer
     .prompt([
         {type: "input",
@@ -32,7 +29,7 @@ const getManger = () => {
         message: "Please enter manager's office number"}
     ])
     .then(res => {
-        // res: { name: 'John', id: 2, email: '2', officeNumber: 2 }
+        return new Manager(res.name, res.id, res.email, res.officeNumber)
     })
 }
 const getEngineer = () => {
@@ -52,6 +49,7 @@ const getEngineer = () => {
         message: "Please enter engineer's GitHub username"}
     ])
     .then(res => {
+        return new Engineer(res.name, res.id, res.email, res.github)
     })
 }
 const getIntern = () => {
@@ -71,7 +69,56 @@ const getIntern = () => {
         message: "Please enter intern's school"}
     ])
     .then(res => {
+        return new Intern(res.name, res.id, res.email, res.school)
     })
 }
+const mainMenu = () => {
+    inquirer.
+    prompt([
+        {type: "checkbox",
+        name: "menu",
+        message: "Please Choose an option:",
+        choices: ["Add an engineer", "Add an intern", "Finish building the team"]
+        }
+    ]).then(res => {
+        console.log(res.menu[0])
+        if (res.menu[0] === "Add an engineer") {
+            return "engineer"
+        } else if (res.menu[0] === "Add an intern") {
+            return "intern"
+        } else if (res.menu[0] === "Finish building the team") {
+            return "finish"
+        } else {
+            return "no option"
+        }
+    })
+} 
 
-getManger(); 
+let getTeam = () => {
+    let team = []; 
+    let teamManager = getManager();
+    team.push(teamManager)
+
+    // lets you know whether to run menu again
+    let menuLogic = () => {
+        let menuRes = mainMenu(); 
+        if (menuRes === "engineer") {
+            let newEngineer = getEngineer();
+            team.push(newEngineer); 
+            menuLogic(); 
+        } else if (menuRes === "inter") {
+            let newIntern = getIntern();
+            team.push(newIntern)
+            menuLogic(); 
+        } else if (menuRes === "no option") {
+            console.log("You must choose an option");
+            menuLogic(); 
+        } else if (menuRes === "finish") {
+            return team; 
+            render(team); 
+        } 
+    }
+    menuLogic(); 
+}
+
+getTeam(); 
