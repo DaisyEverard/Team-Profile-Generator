@@ -7,7 +7,6 @@ import fs from "fs"
 
 
 const OUTPUT_DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 import { render } from './src/page-template.js';
 
@@ -107,7 +106,7 @@ let getTeam = async () => {
             await menuLogic(); 
         } else if (menuRes === "finish") {
             const newHTML = render(team); 
-            const fileName = `./output/${team[0].name}-team-profile.html`; 
+            const fileName = `./output/${team[0].name}-team-profiles.html`; 
             fs.writeFile(fileName, newHTML, (err) => {
                 if (err) {
                     console.error(err)
