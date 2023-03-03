@@ -12,8 +12,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 import { render } from './src/page-template.js';
 
 // creates object/adds them to something
-const getManager = () => {
-    inquirer
+const getManager = async () => {
+    const res =  await inquirer
     .prompt([
         {type: "input",
         name: "name",
@@ -28,12 +28,10 @@ const getManager = () => {
         name: "officeNumber",
         message: "Please enter manager's office number"}
     ])
-    .then(res => {
         return new Manager(res.name, res.id, res.email, res.officeNumber)
-    })
 }
-const getEngineer = () => {
-    inquirer
+const getEngineer = async () => {
+    const res =  await inquirer
     .prompt([
         {type: "input",
         name: "name",
@@ -48,12 +46,10 @@ const getEngineer = () => {
         name: "github",
         message: "Please enter engineer's GitHub username"}
     ])
-    .then(res => {
         return new Engineer(res.name, res.id, res.email, res.github)
-    })
 }
-const getIntern = () => {
-    inquirer
+const getIntern = async () => {
+    const res =  await inquirer
     .prompt([
         {type: "input",
         name: "name",
@@ -68,9 +64,7 @@ const getIntern = () => {
         name: "school",
         message: "Please enter intern's school"}
     ])
-    .then(res => {
         return new Intern(res.name, res.id, res.email, res.school)
-    })
 }
 const mainMenu = () => {
     inquirer.
@@ -81,7 +75,6 @@ const mainMenu = () => {
         choices: ["Add an engineer", "Add an intern", "Finish building the team"]
         }
     ]).then(res => {
-        console.log(res.menu[0])
         if (res.menu[0] === "Add an engineer") {
             return "engineer"
         } else if (res.menu[0] === "Add an intern") {
@@ -94,31 +87,31 @@ const mainMenu = () => {
     })
 } 
 
-let getTeam = () => {
+let getTeam = async () => {
     let team = []; 
-    let teamManager = getManager();
+    let teamManager = await getManager();
     team.push(teamManager)
 
     // lets you know whether to run menu again
-    let menuLogic = () => {
-        let menuRes = mainMenu(); 
+    let menuLogic = async () => {
+        let menuRes = await mainMenu(); 
         if (menuRes === "engineer") {
-            let newEngineer = getEngineer();
+            let newEngineer = await getEngineer();
             team.push(newEngineer); 
-            menuLogic(); 
-        } else if (menuRes === "inter") {
-            let newIntern = getIntern();
+            await menuLogic(); 
+        } else if (menuRes === "intern") {
+            let newIntern = await getIntern();
             team.push(newIntern)
-            menuLogic(); 
+            await menuLogic(); 
         } else if (menuRes === "no option") {
             console.log("You must choose an option");
-            menuLogic(); 
+            await menuLogic(); 
         } else if (menuRes === "finish") {
             return team; 
-            render(team); 
+            // render(team); 
         } 
     }
-    menuLogic(); 
+    await menuLogic(); 
 }
 
 getTeam(); 
