@@ -22,10 +22,9 @@
   "homepage": "https://github.com/DaisyEverard/Team-Profile-Generator#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "inquirer": "^9.1.4"
+    "inquirer": "^8.2.4"
   },
   "devDependencies": {
-    "jest": "^29.4.3"
-  },
-  "type": "module"
+    "jest": "^24.9.0"
+  }
 }
