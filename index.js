@@ -1,14 +1,14 @@
-import {Manager} from "./lib/Manager.js"; 
-import {Engineer} from "./lib/Engineer.js";
-import {Intern} from "./lib/Intern.js"
-import inquirer from "inquirer";
-import path from "path"
-import fs from "fs"
+const Manager = require("./lib/Manager")
+const Engineer = require("./lib/Engineer")
+const Intern = require("./lib/Employee")
+const inquirer = require("inquirer")
+const path = require("path")
+const fs = require("fs")
 
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const OUTPUT_DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), "output");
-
-import { render } from './src/page-template.js';
+const render = require("./src/page-template")
 
 // creates object/adds them to something
 const getManager = async () => {
