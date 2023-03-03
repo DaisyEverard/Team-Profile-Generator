@@ -60,7 +60,7 @@ To test, please follow these instructions:
   - Open the terminal and run `npm test`
   - The results of the tests will printed to the terminal
 
-  NOTE: when the tests were working, they all passed. Due to require() not being supported on newer versions I've had to change to "type": "module" in package.json and use import statements instead. I've tried to resolve this so the tests still work but haven't been able to so far. 
+  NOTE: when the tests were working, they all passed. Due to require() not being supported on newer versions I've had to change to "type": "module" in package.json and use import statements and export {} framework instead. This has cause the tests not to work. I've tried to resolve this by adding a jest config file, changing the file ending to test.mjs, and using babel-jest but nothing has worked so far. 
   
 ## Questions
 
